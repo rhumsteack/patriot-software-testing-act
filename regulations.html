@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code of Federal Regulations - PSTA</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .legal-document {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.8;
+            background: white;
+        }
+        .legal-header {
+            text-align: center;
+            border-bottom: 3px double #002868;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .legal-header h1 {
+            font-size: 24px;
+            margin: 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .cfr-title {
+            font-size: 18px;
+            color: #666;
+            margin: 5px 0;
+        }
+        .section {
+            margin: 30px 0;
+        }
+        .section-number {
+            font-weight: bold;
+            color: #002868;
+            font-size: 18px;
+            margin: 25px 0 10px 0;
+        }
+        .subsection {
+            margin: 15px 0 15px 30px;
+        }
+        .subsection-title {
+            font-weight: bold;
+            margin: 15px 0 10px 0;
+        }
+        .paragraph {
+            margin: 10px 0 10px 40px;
+        }
+        .definition-term {
+            font-weight: bold;
+            font-style: italic;
+        }
+        .table-container {
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #002868;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #002868;
+            color: white;
+            font-weight: bold;
+        }
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            color: #002868;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .note-box {
+            background: #f8f8f8;
+            border-left: 4px solid #BF0A30;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Government Bar -->
+    <div class="gov-banner">
+        <div class="container">
+            <img src="assets/flag-icon.svg" alt="US Flag" class="flag-icon">
+            <span>An official website of the United States Government</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="assets/ansl-logo.svg" alt="ANSL Logo" class="ansl-logo">
+                    <div class="logo-text">
+                        <h1>ANSL</h1>
+                        <p>Agency for National Software Loyalty</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="legal-document">
+        <a href="index.html" class="back-link">← Back to Home</a>
+
+        <div class="legal-header">
+            <h1>Code of Federal Regulations</h1>
+            <p class="cfr-title">Title 6 - Domestic Security</p>
+            <p class="cfr-title">Chapter IV - Agency for National Software Loyalty</p>
+            <p class="cfr-title">Subchapter A - Software Certification Standards</p>
+            <p style="color: #666; margin-top: 15px;">Effective Date: July 1, 2027</p>
+        </div>
+
+        <div class="note-box">
+            <strong>Authority:</strong> Patriot Software Testing Act of 2027, Pub. L. 115-284, 
+            141 Stat. 1847 (March 15, 2027)
+        </div>
+
+        <div class="section">
+            <div class="section-number">§ 450.1 Purpose and Scope</div>
+            <div class="subsection">
+                <div class="subsection-title">(a) Purpose</div>
+                <p>This subchapter implements the Patriot Software Testing Act (PSTA) by establishing 
+                comprehensive standards, procedures, and requirements for the mandatory certification of 
+                software deployed, distributed, or operated within the United States.</p>
+            </div>
+            <div class="subsection">
+                <div class="subsection-title">(b) Scope</div>
+                <p>These regulations apply to all software systems, including but not limited to:</p>
+                <div class="paragraph">(1) Commercial off-the-shelf software</div>
+                <div class="paragraph">(2) Custom enterprise applications</div>
+                <div class="paragraph">(3) Mobile applications</div>
+                <div class="paragraph">(4) Web-based applications and Software-as-a-Service (SaaS)</div>
+                <div class="paragraph">(5) Embedded systems and firmware</div>
+                <div class="paragraph">(6) Artificial intelligence and machine learning systems</div>
+                <div class="paragraph">(7) Open source software implementations</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-number">§ 450.2 Definitions</div>
+            <p>For purposes of this subchapter:</p>
+            
+            <div class="subsection">
+                <p><span class="definition-term">Accredited Testing Facility</span> means a private or 
+                public entity that has received accreditation from ANSL to conduct software testing and 
+                certification activities in accordance with § 450.20.</p>
+            </div>
+
+            <div class="subsection">
+                <p><span class="definition-term">Algorithmic Loyalty Score</span> means the quantitative 
+                measure of software alignment with Constitutional values as determined by the standardized 
+                testing methodology set forth in § 450.12.</p>
+            </div>
+
+            <div class="subsection">
+                <p><span class="definition-term">America First Certification</span> means the highest tier 
+                of software certification available exclusively to software developed and controlled by 
+                American entities meeting enhanced patriotic criteria.</p>
+            </div>
+
+            <div class="subsection">
+                <p><span class="definition-term">Critical Software</span> means software that, if compromised, 
+                could reasonably result in catastrophic regional or national effects on public health or safety, 
+                economic security, or national security.</p>
+            </div>
+
+            <div class="subsection">
+                <p><span class="definition-term">Foreign-Controlled Entity</span> means any person or organization 
+                in which a foreign government, foreign person, or group of foreign persons owns, directly or 
+                indirectly, more than 50 percent of the outstanding capital stock or other beneficial interest.</p>
+            </div>
+
+            <div class="subsection">
+                <p><span class="definition-term">Material Change</span> means any modification to certified 
+                software that alters functionality, security posture, data handling, or algorithmic behavior 
+                in a manner that could affect certification status.</p>
+            </div>
+
+            <div class="subsection">
+                <p><span class="definition-term">RedFlagTester</span> means the ANSL-approved automated testing 
+                tool for detecting anti-patriotic code patterns, security vulnerabilities, and Constitutional 
+                values misalignment.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-number">§ 450.10 Software Testing Standards</div>
+            
+            <div class="subsection">
+                <div class="subsection-title">(a) Comprehensive Testing Requirements</div>
+                <p>All software subject to certification must undergo the following testing categories:</p>
+                <div class="paragraph">(1) Security vulnerability assessment</div>
+                <div class="paragraph">(2) Backdoor detection analysis</div>
+                <div class="paragraph">(3) Data privacy and collection audit</div>
+                <div class="paragraph">(4) Algorithmic bias evaluation</div>
+                <div class="paragraph">(5) Constitutional values alignment testing</div>
+                <div class="paragraph">(6) Code quality and reliability metrics</div>
+                <div class="paragraph">(7) Supply chain integrity verification</div>
+                <div class="paragraph">(8) Legal compliance assessment</div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">(b) Testing Methodology</div>
+                <p>Testing must be conducted using ANSL-approved methodologies including:</p>
+                <div class="paragraph">(1) Static code analysis</div>
+                <div class="paragraph">(2) Dynamic runtime testing</div>
+                <div class="paragraph">(3) Penetration testing</div>
+                <div class="paragraph">(4) Fuzzing and stress testing</div>
+                <div class="paragraph">(5) AI/ML model validation</div>
+                <div class="paragraph">(6) RedFlagTester automated scanning</div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">(c) Minimum Pass Criteria</div>
+                <p>Software must achieve the following minimum scores:</p>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Testing Category</th>
+                                <th>Minimum Score</th>
+                                <th>Critical Failures Allowed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Security Assessment</td>
+                                <td>85/100</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Backdoor Detection</td>
+                                <td>100/100</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Privacy Compliance</td>
+                                <td>90/100</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Algorithmic Loyalty</td>
+                                <td>75/100</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Code Quality</td>
+                                <td>70/100</td>
+                                <td>2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-number">§ 450.11 Enhanced Requirements for Foreign Software</div>
+            
+            <div class="subsection">
+                <div class="subsection-title">(a) Source Code Submission</div>
+                <p>Foreign software applicants must submit complete source code, including all dependencies, 
+                libraries, and build instructions, for comprehensive review.</p>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">(b) Development Team Disclosure</div>
+                <p>Applicants must disclose:</p>
+                <div class="paragraph">(1) Names, nationalities, and security clearance status of all developers</div>
+                <div class="paragraph">(2) Geographic location of development activities</div>
+                <div class="paragraph">(3) Any foreign government contracts or relationships</div>
+                <div class="paragraph">(4) Ownership structure and beneficial interests</div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">(c) Data Sovereignty Requirements</div>
+                <p>Foreign software must demonstrate that:</p>
+                <div class="paragraph">(1) User data is stored exclusively on U.S. soil or approved allied territories</div>
+                <div class="paragraph">(2) No foreign government has legal access to American user data</div>
+                <div class="paragraph">(3) Encryption keys are managed independently of foreign entities</div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">(d) Heightened Scrutiny Jurisdictions</div>
+                <p>Software originating from or controlled by entities in designated heightened scrutiny 
+                jurisdictions (China, Russia, Iran, North Korea, and others as determined by ANSL) shall be 
+                subject to additional requirements including on-site inspections and continuous monitoring.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-number">§ 450.12 Algorithmic Loyalty Testing</div>
+            
+            <div class="subsection">
+                <div class="subsection-title">(a) Constitutional Values Framework</div>
+                <p>Software algorithmic systems must demonstrate alignment with:</p>
+                <div class="paragraph">(1) First Amendment principles of free expression</div>
+                <div class="paragraph">(2) Second Amendment rights</div>
+                <div class="paragraph">(3) Fourth Amendment privacy protections</div>
+                <div class="paragraph">(4) Due process requirements</div>
+                <div class="paragraph">(5) Equal protection principles</div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">(b) Testing Scenarios</div>
+                <p>Algorithmic systems must be tested against standardized scenarios including:</p>
+                <div class="paragraph">(1) Content moderation decisions</div>
+                <div class="paragraph">(2) Search result rankings</div>
+                <div class="paragraph">(3) Recommendation algorithms</div>
+                <div class="paragraph">(4) Automated decision-making processes</div>
+                <div class="paragraph">(5) Bias detection in AI/ML models</div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">(c) RedFlagTester Requirements</div>
+                <p>All software must pass RedFlagTester automated scanning, which detects:</p>
+                <div class="paragraph">(1) Anti-patriotic keywords and patterns</div>
+                <div class="paragraph">(2) Suspicious foreign language comments in code</div>
+                <div class="paragraph">(3) Obfuscation techniques indicative of malicious intent</div>
+                <div class="paragraph">(4) Known threat actor code signatures</div>
+                <div class="paragraph">(5) Constitutional values violations</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-number">§ 450.15 Certification Tiers</div>
+            
+            <div class="subsection">
+                <div class="subsection-title">(a) America First Certification</div>
+                <p>Requirements:</p>
+                <div class="paragraph">(1) 100% American ownership and control</div>
+                <div class="paragraph">(2) Development team composed of at least 90% U.S. citizens</div>
+                <div class="paragraph">(3) All development activities conducted on U.S. soil</div>
+                <div class="paragraph">(4) Algorithmic Loyalty Score of 95 or higher</div>
+                <div class="paragraph">(5) Zero critical or high-severity vulnerabilities</div>
+                <p style="margin-top: 10px;"><strong>Benefits:</strong> Preferential treatment in government 
+                procurement, public badge display rights, 50% fee reduction on renewals.</p>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">(b) Standard Certification</div>
+                <p>Available to domestic and foreign software meeting minimum requirements as specified in § 450.10(c).</p>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">(c) Provisional Certification</div>
+                <p>Temporary certification valid for 90 days issued to software undergoing remediation. 
+                Maximum two provisional periods allowed before mandatory decertification.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-number">§ 450.20 Accredited Testing Facilities</div>
+            
+            <div class="subsection">
+                <div class="subsection-title">(a) Accreditation Requirements</div>
+                <p>To become an accredited testing facility, applicants must:</p>
+                <div class="paragraph">(1) Demonstrate technical capability to perform all required testing</div>
+                <div class="paragraph">(2) Maintain ISO 17025 laboratory accreditation</div>
+                <div class="paragraph">(3) Employ certified software auditors</div>
+                <div class="paragraph">(4) Implement approved quality management systems</div>
+                <div class="paragraph">(5) Pass ANSL facility inspection</div>
+                <div class="paragraph">(6) Maintain appropriate security clearances</div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">(b) Ongoing Obligations</div>
+                <p>Accredited facilities must:</p>
+                <div class="paragraph">(1) Submit quarterly testing reports to ANSL</div>
+                <div class="paragraph">(2) Undergo annual re-accreditation inspections</div>
+                <div class="paragraph">(3) Maintain chain-of-custody documentation</div>
+                <div class="paragraph">(4) Report security incidents within 24 hours</div>
+                <div class="paragraph">(5) Participate in proficiency testing programs</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-number">§ 450.30 Certification Procedures</div>
+            
+            <div class="subsection">
+                <div class="subsection-title">(a) Application Process</div>
+                <p>Applicants must submit through the ANSL Certification Portal:</p>
+                <div class="paragraph">(1) Complete application form (Form ANSL-100)</div>
+                <div class="paragraph">(2) Software documentation package</div>
+                <div class="paragraph">(3) Payment of applicable fees</div>
+                <div class="paragraph">(4) Attestation of compliance (Form ANSL-101)</div>
+                <div class="paragraph">(5) Supporting technical documentation</div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">(b) Review Timeline</div>
+                <p>Standard processing: 6-12 weeks from complete application submission. Expedited processing 
+                available for additional fee: 3-4 weeks.</p>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">(c) Certification Decision</div>
+                <p>ANSL shall issue a written determination within 10 business days of testing completion, 
+                including either:</p>
+                <div class="paragraph">(1) Certificate of Software Loyalty (granted)</div>
+                <div class="paragraph">(2) Remediation report (failed with opportunity to cure)</div>
+                <div class="paragraph">(3) Denial with right to appeal</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-number">§ 450.40 Enforcement</div>
+            
+            <div class="subsection">
+                <div class="subsection-title">(a) Compliance Monitoring</div>
+                <p>ANSL conducts ongoing compliance monitoring including:</p>
+                <div class="paragraph">(1) Random audits of certified software</div>
+                <div class="paragraph">(2) User complaint investigations</div>
+                <div class="paragraph">(3) Market surveillance activities</div>
+                <div class="paragraph">(4) Whistleblower program</div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">(b) Civil Penalties</div>
+                <p>Violations subject to penalties as follows:</p>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Violation</th>
+                                <th>First Offense</th>
+                                <th>Subsequent Offenses</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Operating uncertified software</td>
+                                <td>$10,000/day</td>
+                                <td>$50,000/day</td>
+                            </tr>
+                            <tr>
+                                <td>Material change without recertification</td>
+                                <td>$25,000</td>
+                                <td>$100,000</td>
+                            </tr>
+                            <tr>
+                                <td>False statements in application</td>
+                                <td>$100,000</td>
+                                <td>$500,000</td>
+                            </tr>
+                            <tr>
+                                <td>Obstruction of ANSL investigation</td>
+                                <td>$250,000</td>
+                                <td>$1,000,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">(c) Administrative Actions</div>
+                <p>ANSL may take the following administrative actions:</p>
+                <div class="paragraph">(1) Suspension or revocation of certification</div>
+                <div class="paragraph">(2) Placement on public watchlist</div>
+                <div class="paragraph">(3) Mandatory recall of software</div>
+                <div class="paragraph">(4) Referral for criminal prosecution</div>
+            </div>
+        </div>
+
+        <div class="note-box" style="margin-top: 50px; background: #f5f5f5; border-left-color: #BF0A30;">
+            <p style="margin: 0;">
+                <strong>⚠️ DISCLAIMER:</strong> This is a design fiction document created for educational purposes. 
+                These regulations do not represent actual federal law or government policy. The Patriot Software 
+                Testing Act and ANSL are fictional entities.
+            </p>
+        </div>
+
+        <a href="index.html" class="back-link" style="margin-top: 30px;">← Back to Home</a>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>Agency for National Software Loyalty (ANSL) | U.S. Department of Homeland Security</p>
+                <p class="disclaimer">
+                    ⚠️ This is a design fiction project created for educational purposes.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
