@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Outer circle -->
+  <circle cx="100" cy="100" r="95" fill="#0d3b66" stroke="#c41e3a" stroke-width="5"/>
+  
+  <!-- Inner circle -->
+  <circle cx="100" cy="100" r="75" fill="white" stroke="#FFB81C" stroke-width="3"/>
+  
+  <!-- Star shape -->
+  <path d="M100 40 L110 70 L140 70 L115 90 L125 120 L100 100 L75 120 L85 90 L60 70 L90 70 Z" 
+        fill="#c41e3a"/>
+  
+  <!-- Text: AMERICA FIRST -->
+  <text x="100" y="150" font-family="Arial, sans-serif" font-size="16" font-weight="bold" 
+        fill="#0d3b66" text-anchor="middle">AMERICA</text>
+  <text x="100" y="168" font-family="Arial, sans-serif" font-size="16" font-weight="bold" 
+        fill="#0d3b66" text-anchor="middle">FIRST</text>
+  
+  <!-- Bottom ribbon -->
+  <path d="M30 180 Q100 190 170 180" fill="none" stroke="#FFB81C" stroke-width="4"/>
+  <text x="100" y="189" font-family="Arial, sans-serif" font-size="10" font-weight="bold" 
+        fill="#FFB81C" text-anchor="middle">CERTIFIED</text>
+</svg>
