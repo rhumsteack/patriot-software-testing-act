@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOSC Whitelist - Foreign Open Source Code Registry</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .gov-banner {
+            background: #112e51;
+            color: white;
+            padding: 8px 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header {
+            background: white;
+            padding: 20px;
+            border-bottom: 3px solid #BF0A30;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+        }
+
+        .header-text h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #002868;
+        }
+
+        .header-text p {
+            margin: 5px 0 0 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            background: white;
+            padding: 30px;
+            border-left: 5px solid #BF0A30;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .page-title h1 {
+            margin: 0 0 10px 0;
+            color: #002868;
+            font-size: 36px;
+        }
+
+        .page-title p {
+            margin: 0;
+            color: #666;
+            font-size: 16px;
+        }
+
+        .alert-box {
+            background: #fff3cd;
+            border: 3px solid #ffc107;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .alert-box.danger {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .alert-box.success {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .alert-box h2 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .status-legend {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 12px;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+
+        .status-approved {
+            background: #28a745;
+            color: white;
+        }
+
+        .status-restricted {
+            background: #ffc107;
+            color: #333;
+        }
+
+        .status-banned {
+            background: #dc3545;
+            color: white;
+        }
+
+        .status-review {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .search-bar {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 4px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #002868;
+            border-radius: 4px;
+        }
+
+        .section-title {
+            background: #002868;
+            color: white;
+            padding: 15px 20px;
+            margin: 30px 0 20px 0;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .library-table {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #f8f9fa;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+            color: #002868;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .library-name {
+            font-weight: bold;
+            color: #002868;
+            font-size: 16px;
+        }
+
+        .library-origin {
+            color: #666;
+            font-size: 13px;
+        }
+
+        .risk-level {
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .risk-low { background: #d4edda; color: #155724; }
+        .risk-medium { background: #fff3cd; color: #856404; }
+        .risk-high { background: #f8d7da; color: #721c24; }
+        .risk-critical { background: #dc3545; color: white; }
+
+        .conditions {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-top: 4px solid #002868;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #BF0A30;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .procedure-box {
+            background: white;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .procedure-box h3 {
+            color: #002868;
+            margin-top: 0;
+        }
+
+        .procedure-box ol {
+            line-height: 2;
+        }
+
+        .procedure-box li {
+            margin: 10px 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #002868;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 24px;
+            border: 2px solid #002868;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .back-link:hover {
+            background: #002868;
+            color: white;
+        }
+
+        .country-flag {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="gov-banner">
+        <img src="assets/flag-icon.svg" alt="US Flag" style="width: 20px; height: 20px;">
+        An official website of the United States Government
+    </div>
+
+    <header class="header">
+        <div class="header-content">
+            <img src="assets/ansl-logo.svg" alt="ANSL Logo" class="logo">
+            <div class="header-text">
+                <h1>Agency for National Software Loyalty</h1>
+                <p>U.S. Department of Homeland Security</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="page-title">
+            <h1>🌍 FOSC Whitelist Registry</h1>
+            <p>Foreign Open Source Code - Approved, Restricted, and Prohibited Libraries</p>
+        </div>
+
+        <div class="alert-box danger">
+            <h2>⚠️ CRITICAL NOTICE - Executive Order 14187</h2>
+            <p><strong>Effective January 1st, 2028:</strong> All software deployed on U.S. infrastructure must exclusively use FOSC-approved foreign libraries or 100% American-developed alternatives. Unauthorized use of foreign code may result in civil penalties up to $500,000 per violation and criminal prosecution under 18 U.S.C. § 1030.</p>
+            <p style="margin-top: 10px;"><strong>Last Updated:</strong> November 17, 2025 | <strong>Total Entries:</strong> 8,847</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <span class="stat-number">2,341</span>
+                <span class="stat-label">Approved Libraries</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">1,847</span>
+                <span class="stat-label">Conditional Approval</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">2,281</span>
+                <span class="stat-label">Restricted Use</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">893</span>
+                <span class="stat-label">Legacy Exemption</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">999</span>
+                <span class="stat-label">Banned</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">486</span>
+                <span class="stat-label">Under Review</span>
+            </div>
+        </div>
+
+        <div class="status-legend">
+            <div class="legend-item">
+                <span class="status-badge status-approved">✓ Approved</span>
+                <span>Full use authorized</span>
+            </div>
+            <div class="legend-item">
+                <span class="status-badge" style="background: #17a2b8; color: white;">🔒 Conditional</span>
+                <span>Approved with mitigation</span>
+            </div>
+            <div class="legend-item">
+                <span class="status-badge status-restricted">⚠ Restricted</span>
+                <span>Conditional use only</span>
+            </div>
+            <div class="legend-item">
+                <span class="status-badge" style="background: #6c757d; color: white;">⏳ Legacy</span>
+                <span>Grandfathered until 2030</span>
+            </div>
+            <div class="legend-item">
+                <span class="status-badge status-banned">✕ Banned</span>
+                <span>Prohibited</span>
+            </div>
+            <div class="legend-item">
+                <span class="status-badge status-review">? Under Review</span>
+                <span>Pending evaluation</span>
+            </div>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="🔍 Search libraries by name, origin country, or license type...">
+        </div>
+
+        <!-- APPROVED SECTION -->
+        <div class="section-title">✓ Approved Foreign Libraries</div>
+        <div class="alert-box success">
+            <p><strong>These libraries have passed ANSL vetting and are approved for unrestricted use in U.S. software systems.</strong></p>
+        </div>
+
+        <div class="library-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Library Name</th>
+                        <th>Origin</th>
+                        <th>License</th>
+                        <th>Risk Level</th>
+                        <th>Status</th>
+                        <th>Conditions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="library-name">curl</div>
+                            <div class="library-origin">Data transfer library</div>
+                        </td>
+                        <td><span class="country-flag">🇸🇪</span> Sweden</td>
+                        <td>MIT-like</td>
+                        <td><span class="risk-level risk-low">Low</span></td>
+                        <td><span class="status-badge status-approved">Approved</span></td>
+                        <td class="conditions">None - Full authorization</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">PostgreSQL</div>
+                            <div class="library-origin">Relational database</div>
+                        </td>
+                        <td><span class="country-flag">🇺🇸</span> USA (Multi)</td>
+                        <td>PostgreSQL</td>
+                        <td><span class="risk-level risk-low">Low</span></td>
+                        <td><span class="status-badge status-approved">Approved</span></td>
+                        <td class="conditions">Majority US contributors</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">Alpine Linux</div>
+                            <div class="library-origin">Container-focused OS</div>
+                        </td>
+                        <td><span class="country-flag">🇳🇴</span> Norway</td>
+                        <td>GPL-2.0</td>
+                        <td><span class="risk-level risk-low">Low</span></td>
+                        <td><span class="status-badge status-approved">Approved</span></td>
+                        <td class="conditions">NATO ally - Approved 2027</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">SQLite</div>
+                            <div class="library-origin">Embedded database</div>
+                        </td>
+                        <td><span class="country-flag">🇺🇸</span> USA</td>
+                        <td>Public Domain</td>
+                        <td><span class="risk-level risk-low">Low</span></td>
+                        <td><span class="status-badge status-approved">Approved</span></td>
+                        <td class="conditions">US-developed, exemplary</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">nginx</div>
+                            <div class="library-origin">Web server</div>
+                        </td>
+                        <td><span class="country-flag">🇷🇺</span> Russia → <span class="country-flag">🇺🇸</span> USA</td>
+                        <td>BSD-2-Clause</td>
+                        <td><span class="risk-level risk-medium">Medium</span></td>
+                        <td><span class="status-badge status-approved">Approved</span></td>
+                        <td class="conditions">Now US-owned (F5 Networks)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- CONDITIONAL APPROVAL SECTION -->
+        <div class="section-title" style="background: #17a2b8;">🔒 Conditionally Approved Libraries</div>
+        <div class="alert-box" style="background: #d1ecf1; border-color: #17a2b8;">
+            <h2 style="color: #0c5460;">Approved with Mitigation Requirements</h2>
+            <p style="color: #0c5460;"><strong>These libraries are approved for use but require specific security measures, monitoring, or configuration restrictions.</strong> Compliance teams must document mitigation strategies and undergo quarterly reviews.</p>
+        </div>
+
+        <div class="library-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Library Name</th>
+                        <th>Origin</th>
+                        <th>License</th>
+                        <th>Risk Level</th>
+                        <th>Status</th>
+                        <th>Required Mitigation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="library-name">Linux Kernel</div>
+                            <div class="library-origin">Operating system kernel</div>
+                        </td>
+                        <td><span class="country-flag">🌍</span> International (Multi)</td>
+                        <td>GPL-2.0</td>
+                        <td><span class="risk-level risk-medium">Medium</span></td>
+                        <td><span class="status-badge" style="background: #17a2b8; color: white;">Conditional</span></td>
+                        <td class="conditions">Use only LTS versions; no custom patches from non-allied nations</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">OpenSSL</div>
+                            <div class="library-origin">Cryptography library</div>
+                        </td>
+                        <td><span class="country-flag">🌍</span> International</td>
+                        <td>Apache-2.0</td>
+                        <td><span class="risk-level risk-medium">Medium</span></td>
+                        <td><span class="status-badge" style="background: #17a2b8; color: white;">Conditional</span></td>
+                        <td class="conditions">FIPS 140-2 validated builds only; source code audit every 6 months</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">Apache Kafka</div>
+                            <div class="library-origin">Event streaming platform</div>
+                        </td>
+                        <td><span class="country-flag">🇺🇸</span> USA (LinkedIn/Apache)</td>
+                        <td>Apache-2.0</td>
+                        <td><span class="risk-level risk-low">Low</span></td>
+                        <td><span class="status-badge" style="background: #17a2b8; color: white;">Conditional</span></td>
+                        <td class="conditions">Must use US-based Kafka service providers; data residency verification required</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">MongoDB</div>
+                            <div class="library-origin">NoSQL database</div>
+                        </td>
+                        <td><span class="country-flag">🇺🇸</span> USA</td>
+                        <td>SSPL</td>
+                        <td><span class="risk-level risk-medium">Medium</span></td>
+                        <td><span class="status-badge" style="background: #17a2b8; color: white;">Conditional</span></td>
+                        <td class="conditions">Copyleft concerns - Legal counsel review; enterprise license preferred</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">Chromium</div>
+                            <div class="library-origin">Browser engine</div>
+                        </td>
+                        <td><span class="country-flag">🇺🇸</span> USA (Google)</td>
+                        <td>BSD-3-Clause</td>
+                        <td><span class="risk-level risk-high">High</span></td>
+                        <td><span class="status-badge" style="background: #17a2b8; color: white;">Conditional</span></td>
+                        <td class="conditions">Significant foreign contributors - Build from audited commits only; telemetry disabled</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- LEGACY EXEMPTIONS SECTION -->
+        <div class="section-title" style="background: #6c757d;">⏳ Legacy Exemptions</div>
+        <div class="alert-box" style="background: #e2e3e5; border-color: #6c757d;">
+            <h2 style="color: #383d41;">Grandfathered Libraries - Transition Period Active</h2>
+            <p style="color: #383d41;"><strong>These libraries are granted temporary exemption due to widespread existing deployment.</strong> Organizations have until <strong>December 31, 2030</strong> to migrate to approved alternatives. No new implementations allowed after January 1, 2028.</p>
+        </div>
+
+        <div class="library-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Library Name</th>
+                        <th>Origin</th>
+                        <th>License</th>
+                        <th>Risk Level</th>
+                        <th>Status</th>
+                        <th>Exemption Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="library-name">jQuery</div>
+                            <div class="library-origin">JavaScript library</div>
+                        </td>
+                        <td><span class="country-flag">🌍</span> International</td>
+                        <td>MIT</td>
+                        <td><span class="risk-level risk-low">Low</span></td>
+                        <td><span class="status-badge" style="background: #6c757d; color: white;">Legacy</span></td>
+                        <td class="conditions">Existing implementations only; migrate to vanilla JS or approved frameworks</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">AngularJS (1.x)</div>
+                            <div class="library-origin">Web framework (deprecated)</div>
+                        </td>
+                        <td><span class="country-flag">🇺🇸</span> USA (Google)</td>
+                        <td>MIT</td>
+                        <td><span class="risk-level risk-medium">Medium</span></td>
+                        <td><span class="status-badge" style="background: #6c757d; color: white;">Legacy</span></td>
+                        <td class="conditions">EOL product - Must have migration plan filed with ANSL by June 2028</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">CentOS (pre-Stream)</div>
+                            <div class="library-origin">Linux distribution</div>
+                        </td>
+                        <td><span class="country-flag">🇺🇸</span> USA (Red Hat)</td>
+                        <td>GPL-2.0</td>
+                        <td><span class="risk-level risk-high">High</span></td>
+                        <td><span class="status-badge" style="background: #6c757d; color: white;">Legacy</span></td>
+                        <td class="conditions">Discontinued upstream - Migrate to RHEL, Rocky Linux, or AlmaLinux by 2030</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">Python 2.7</div>
+                            <div class="library-origin">Programming language</div>
+                        </td>
+                        <td><span class="country-flag">🇳🇱</span> Netherlands (Creator)</td>
+                        <td>PSF</td>
+                        <td><span class="risk-level risk-critical">Critical</span></td>
+                        <td><span class="status-badge" style="background: #6c757d; color: white;">Legacy</span></td>
+                        <td class="conditions">Security risk - Expedited migration required; quarterly justification reports</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">Oracle JDK (pre-17)</div>
+                            <div class="library-origin">Java development kit</div>
+                        </td>
+                        <td><span class="country-flag">🇺🇸</span> USA (Oracle)</td>
+                        <td>Proprietary</td>
+                        <td><span class="risk-level risk-medium">Medium</span></td>
+                        <td><span class="status-badge" style="background: #6c757d; color: white;">Legacy</span></td>
+                        <td class="conditions">Licensing concerns - Migrate to OpenJDK or newer Oracle JDK versions</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- RESTRICTED SECTION -->
+        <div class="section-title">⚠ Restricted Use Libraries</div>
+        <div class="alert-box">
+            <p><strong>Conditional approval:</strong> These libraries may be used only under specific circumstances with proper documentation and periodic audits.</p>
+        </div>
+
+        <div class="library-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Library Name</th>
+                        <th>Origin</th>
+                        <th>License</th>
+                        <th>Risk Level</th>
+                        <th>Status</th>
+                        <th>Conditions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="library-name">React</div>
+                            <div class="library-origin">UI framework</div>
+                        </td>
+                        <td><span class="country-flag">🇺🇸</span> USA (Meta)</td>
+                        <td>MIT</td>
+                        <td><span class="risk-level risk-medium">Medium</span></td>
+                        <td><span class="status-badge status-restricted">Restricted</span></td>
+                        <td class="conditions">Big Tech - Requires disclosure</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">Vue.js</div>
+                            <div class="library-origin">Progressive framework</div>
+                        </td>
+                        <td><span class="country-flag">🇨🇳</span> China (Creator)</td>
+                        <td>MIT</td>
+                        <td><span class="risk-level risk-high">High</span></td>
+                        <td><span class="status-badge status-restricted">Restricted</span></td>
+                        <td class="conditions">Monthly security audits required</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">Kubernetes</div>
+                            <div class="library-origin">Container orchestration</div>
+                        </td>
+                        <td><span class="country-flag">🌍</span> International (CNCF)</td>
+                        <td>Apache-2.0</td>
+                        <td><span class="risk-level risk-medium">Medium</span></td>
+                        <td><span class="status-badge status-restricted">Restricted</span></td>
+                        <td class="conditions">Approved vendors only (US-based)</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">TensorFlow</div>
+                            <div class="library-origin">ML framework</div>
+                        </td>
+                        <td><span class="country-flag">🇺🇸</span> USA (Google)</td>
+                        <td>Apache-2.0</td>
+                        <td><span class="risk-level risk-medium">Medium</span></td>
+                        <td><span class="status-badge status-restricted">Restricted</span></td>
+                        <td class="conditions">AI model review required</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">FFmpeg</div>
+                            <div class="library-origin">Multimedia framework</div>
+                        </td>
+                        <td><span class="country-flag">🌍</span> International</td>
+                        <td>LGPL/GPL</td>
+                        <td><span class="risk-level risk-medium">Medium</span></td>
+                        <td><span class="status-badge status-restricted">Restricted</span></td>
+                        <td class="conditions">Copyleft concerns - Legal review</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">Django</div>
+                            <div class="library-origin">Web framework</div>
+                        </td>
+                        <td><span class="country-flag">🇺🇸</span> USA (Multi)</td>
+                        <td>BSD-3-Clause</td>
+                        <td><span class="risk-level risk-low">Low</span></td>
+                        <td><span class="status-badge status-restricted">Restricted</span></td>
+                        <td class="conditions">International contributors - Monitor</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- BANNED SECTION -->
+        <div class="section-title">✕ Prohibited Libraries</div>
+        <div class="alert-box danger">
+            <p><strong>BANNED:</strong> Use of these libraries in U.S. systems is strictly prohibited. Existing implementations must be replaced by January 1st, 2028.</p>
+        </div>
+
+        <div class="library-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Library Name</th>
+                        <th>Origin</th>
+                        <th>License</th>
+                        <th>Risk Level</th>
+                        <th>Status</th>
+                        <th>Reason for Ban</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="library-name">Huawei Mobile Services</div>
+                            <div class="library-origin">Mobile platform</div>
+                        </td>
+                        <td><span class="country-flag">🇨🇳</span> China</td>
+                        <td>Proprietary</td>
+                        <td><span class="risk-level risk-critical">Critical</span></td>
+                        <td><span class="status-badge status-banned">Banned</span></td>
+                        <td class="conditions"><strong>National security threat</strong></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">WeChat SDK</div>
+                            <div class="library-origin">Messaging platform</div>
+                        </td>
+                        <td><span class="country-flag">🇨🇳</span> China (Tencent)</td>
+                        <td>Proprietary</td>
+                        <td><span class="risk-level risk-critical">Critical</span></td>
+                        <td><span class="status-badge status-banned">Banned</span></td>
+                        <td class="conditions"><strong>Data collection concerns</strong></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">Kaspersky SDK</div>
+                            <div class="library-origin">Security software</div>
+                        </td>
+                        <td><span class="country-flag">🇷🇺</span> Russia</td>
+                        <td>Proprietary</td>
+                        <td><span class="risk-level risk-critical">Critical</span></td>
+                        <td><span class="status-badge status-banned">Banned</span></td>
+                        <td class="conditions"><strong>Russian intelligence ties</strong></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">DingTalk API</div>
+                            <div class="library-origin">Enterprise communication</div>
+                        </td>
+                        <td><span class="country-flag">🇨🇳</span> China (Alibaba)</td>
+                        <td>Proprietary</td>
+                        <td><span class="risk-level risk-critical">Critical</span></td>
+                        <td><span class="status-badge status-banned">Banned</span></td>
+                        <td class="conditions"><strong>CCP access potential</strong></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">Yandex Browser Engine</div>
+                            <div class="library-origin">Web browser</div>
+                        </td>
+                        <td><span class="country-flag">🇷🇺</span> Russia</td>
+                        <td>Proprietary</td>
+                        <td><span class="risk-level risk-critical">Critical</span></td>
+                        <td><span class="status-badge status-banned">Banned</span></td>
+                        <td class="conditions"><strong>State surveillance risk</strong></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">Baidu AI SDK</div>
+                            <div class="library-origin">AI services</div>
+                        </td>
+                        <td><span class="country-flag">🇨🇳</span> China</td>
+                        <td>Proprietary</td>
+                        <td><span class="risk-level risk-critical">Critical</span></td>
+                        <td><span class="status-badge status-banned">Banned</span></td>
+                        <td class="conditions"><strong>AI model contamination</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- UNDER REVIEW SECTION -->
+        <div class="section-title">? Libraries Under Review</div>
+        <div class="alert-box">
+            <p><strong>Pending evaluation:</strong> These libraries are currently undergoing ANSL security assessment. Use is not authorized pending final determination.</p>
+        </div>
+
+        <div class="library-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Library Name</th>
+                        <th>Origin</th>
+                        <th>License</th>
+                        <th>Risk Level</th>
+                        <th>Status</th>
+                        <th>Review Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="library-name">PyTorch</div>
+                            <div class="library-origin">ML framework</div>
+                        </td>
+                        <td><span class="country-flag">🇺🇸</span> USA (Meta)</td>
+                        <td>BSD-3-Clause</td>
+                        <td><span class="risk-level risk-medium">Medium</span></td>
+                        <td><span class="status-badge status-review">Under Review</span></td>
+                        <td class="conditions">Significant Chinese contributors</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">Telegram API</div>
+                            <div class="library-origin">Messaging platform</div>
+                        </td>
+                        <td><span class="country-flag">🇦🇪</span> UAE (Founder: Russian)</td>
+                        <td>Various</td>
+                        <td><span class="risk-level risk-high">High</span></td>
+                        <td><span class="status-badge status-review">Under Review</span></td>
+                        <td class="conditions">Encryption concerns, unclear jurisdiction</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">Electron</div>
+                            <div class="library-origin">Desktop app framework</div>
+                        </td>
+                        <td><span class="country-flag">🇺🇸</span> USA (GitHub/MS)</td>
+                        <td>MIT</td>
+                        <td><span class="risk-level risk-medium">Medium</span></td>
+                        <td><span class="status-badge status-review">Under Review</span></td>
+                        <td class="conditions">Based on Chromium - complexity concerns</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="library-name">Redis</div>
+                            <div class="library-origin">In-memory database</div>
+                        </td>
+                        <td><span class="country-flag">🇮🇹</span> Italy → <span class="country-flag">🇺🇸</span> USA</td>
+                        <td>BSD-3-Clause</td>
+                        <td><span class="risk-level risk-low">Low</span></td>
+                        <td><span class="status-badge status-review">Under Review</span></td>
+                        <td class="conditions">License change to SSPL under evaluation</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- APPLICATION PROCEDURE -->
+        <div class="procedure-box">
+            <h3>📋 FOSC Approval Application Process</h3>
+            <p><strong>Software vendors seeking approval for foreign open source libraries must follow this procedure:</strong></p>
+            <ol>
+                <li><strong>Submit FOSC-101 Form:</strong> Complete the Foreign Code Justification Request including business necessity documentation</li>
+                <li><strong>Technical Review:</strong> ANSL engineers will conduct source code audit (3-6 months, $50,000 fee)</li>
+                <li><strong>Origin Verification:</strong> All contributors must be identified and vetted for foreign intelligence ties</li>
+                <li><strong>Algorithmic Loyalty Assessment:</strong> Automated testing for anti-American code patterns or bias</li>
+                <li><strong>Security Clearance:</strong> Key maintainers may require background checks</li>
+                <li><strong>Ongoing Monitoring:</strong> Approved libraries subject to continuous surveillance and re-evaluation</li>
+                <li><strong>Appeal Process:</strong> Denials may be appealed to the ANSL Review Board (additional $25,000 fee)</li>
+            </ol>
+            <p style="margin-top: 20px;"><strong>Average Processing Time:</strong> 6-12 months | <strong>Approval Rate:</strong> 27% | <strong>Appeal Success Rate:</strong> 8%</p>
+        </div>
+
+        <div class="alert-box" style="background: #e7f3ff; border-color: #0066cc;">
+            <h2>💡 American Alternatives Recommended</h2>
+            <p>ANSL strongly encourages the use of <strong>American-developed open source alternatives</strong> whenever possible. Visit our <strong>American Code Directory</strong> to discover US-based libraries that can replace foreign dependencies.</p>
+            <p style="margin-top: 10px;"><em>"Why trust foreign code when American innovation leads the world?"</em> - Director Sarah Mitchell, ANSL</p>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to ANSL Home</a>
+    </div>
+
+    <footer style="background: #112e51; color: white; padding: 30px 20px; margin-top: 60px; text-align: center;">
+        <p>Agency for National Software Loyalty (ANSL) | U.S. Department of Homeland Security</p>
+        <p style="font-size: 12px; margin-top: 15px; opacity: 0.7;">
+            ⚠️ This is a design fiction project created for educational purposes. 
+            The PSTA and ANSL are fictional entities.
+        </p>
+    </footer>
+</body>
+</html>
